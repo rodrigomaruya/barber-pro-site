@@ -21,13 +21,13 @@ export function ListHaircuts({ data }: Props) {
   const { setListActiveHaircuts, listActiveHaircuts } = use(AuthContext);
 
   useEffect(() => {
-    setListActiveHaircuts({ data });
+    setListActiveHaircuts(data);
   }, [data]);
 
   return (
     <>
-      {listActiveHaircuts.data.length === 0 && <p>Nenhum corte Desativado</p>}
-      {listActiveHaircuts.data.map((item) => (
+      {listActiveHaircuts.length === 0 && <p>Nenhum corte Desativado</p>}
+      {listActiveHaircuts.map((item) => (
         <Link
           href={`/haircuts/${item.id}`}
           className="flex justify-between bg-slate-700 p-4 rounded-md my-4"

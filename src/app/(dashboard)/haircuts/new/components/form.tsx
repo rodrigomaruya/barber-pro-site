@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useContext } from "react";
+import { AuthContext } from "@/context/authProvider";
 import { setupAPIClient } from "@/service/api";
 import { useRouter } from "next/navigation";
 
@@ -14,6 +15,7 @@ interface Props {
 export function Form({ token, subscription, count }: Props) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const { setListActiveHaircuts } = useContext(AuthContext);
   const router = useRouter();
 
   async function handleRegister(e: FormEvent) {
@@ -24,10 +26,11 @@ export function Form({ token, subscription, count }: Props) {
 
     try {
       const api = setupAPIClient(token);
-      await api.post("/haircut", {
+      const { data } = await api.post("/haircut", {
         name: name,
         price: Number(price),
       });
+      setListActiveHaircuts((prev) => [...prev, data]);
       router.push("/haircuts");
     } catch (error) {
       console.log(error);

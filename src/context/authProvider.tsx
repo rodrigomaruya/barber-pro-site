@@ -19,8 +19,8 @@ interface AuthContextData {
   signIn: (credential: SignInProps) => Promise<void>;
   signUp: (credential: SignUpProps) => Promise<void>;
   logoutUser: () => Promise<void>;
-  listActiveHaircuts: Props;
-  setListActiveHaircuts: Dispatch<SetStateAction<Props>>;
+  listActiveHaircuts: HaircutsProps[];
+  setListActiveHaircuts: Dispatch<SetStateAction<HaircutsProps[]>>;
   enableOrDisable: boolean;
   setEnableOrDisable: Dispatch<SetStateAction<boolean>>;
   activeStatus: boolean;
@@ -77,9 +77,9 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserProps>();
-  const [listActiveHaircuts, setListActiveHaircuts] = useState<Props>({
-    data: [],
-  });
+  const [listActiveHaircuts, setListActiveHaircuts] = useState<HaircutsProps[]>(
+    []
+  );
   const [listReport, setListReport] = useState<ReportProps[]>([]);
   const [activeStatus, setActiveStatus] = useState(false);
   const [enableOrDisable, setEnableOrDisable] = useState(true);

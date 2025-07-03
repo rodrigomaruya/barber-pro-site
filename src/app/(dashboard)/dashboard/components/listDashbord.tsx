@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FaMoneyBillAlt } from "react-icons/fa";
 import { FiScissors, FiUser, FiX } from "react-icons/fi";
 import { IoMdPerson } from "react-icons/io";
@@ -25,6 +25,10 @@ export function ListDashboard({ data, token }: Props) {
   const [haircut, setHaircut] = useState<HaircutProps[]>(data);
   const [modalHaircut, setModalHaircut] = useState<HaircutProps>();
   const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    setHaircut(data);
+  }, []);
 
   function handleOpen(id: string) {
     dialogRef?.current?.showModal();
