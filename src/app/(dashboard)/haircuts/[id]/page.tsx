@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default async function EditHaircut({ params }: Props) {
-  const { id } = await params;
+  const { id } = params;
   const token = await getCookiesServer();
   const api = setupAPIClient(token);
   if (!token) {
