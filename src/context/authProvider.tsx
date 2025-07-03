@@ -141,6 +141,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       if (error.response?.data?.error) {
         console.log("Erro ao logar", error.response.data.error);
+        alert(error.response.data.error);
       } else {
         console.log("Erro desconhecido", error);
       }

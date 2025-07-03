@@ -33,7 +33,7 @@ export function FormLogin() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button
-        className="bg-amber-300 p-2 rounded-md text-slate-500 font-semibold cursor-pointer"
+        className="bg-amber-500 p-2 rounded-md text-slate-500 font-semibold cursor-pointer"
         type="submit"
       >
         Acessar

@@ -26,7 +26,7 @@ export default async function Home() {
         </p>
         <p className="text-base mb-6">
           Com o plano{" "}
-          <span className="font-semibold text-yellow-300">premium</span>,
+          <span className="font-semibold text-amber-500-300">premium</span>,
           desbloqueie relatórios completos para acompanhar seus ganhos e
           evolução.
         </p>
@@ -46,7 +46,10 @@ export default async function Home() {
           </p>
           <p>Pagamentos são simulados com Stripe Test Mode.</p>
           <p className="mt-2">
-            Cartão teste: <span className="font-mono">4242 4242 4242 4242</span>
+            Cartão teste:{" "}
+            <span className="font-semibold text-amber-900">
+              4242 4242 4242 4242
+            </span>
             <br />
             Validade: qualquer data futura
             <br />

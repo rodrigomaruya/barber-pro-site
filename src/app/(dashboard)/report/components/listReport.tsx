@@ -55,11 +55,11 @@ export function ListReport({ data, token }: Props) {
   }
 
   return (
-    <section className="flex flex-col max-w-5xl w-full mx-auto mt-10 gap-2">
+    <section className="flex flex-col max-w-5xl w-full mx-auto mt-10 gap-4">
       {listReport.length === 0 && (
         <h2 className="text-2xl">Nenhum relatório encontrado...</h2>
       )}
-      <div className="flex w-full flex-col md:flex-row justify-between p-4 bg-slate-900 rounded-md">
+      <div className="hidden md:flex w-full flex-col md:flex-row justify-between p-4 bg-slate-900 rounded-md">
         <p className="flex-1">Data</p>
         <p className="flex-1">Nome</p>
         <p className="flex-1">Nome do corte</p>
@@ -68,7 +68,7 @@ export function ListReport({ data, token }: Props) {
       {listReport.map((item) => (
         <div
           key={item.id}
-          className="flex w-full flex-col md:flex-row justify-between p-4 bg-slate-700 rounded-md hover:opacity-75 relative"
+          className="flex w-full flex-col md:flex-row justify-between p-4 bg-slate-700 rounded-md relative"
         >
           <p className="flex-1">{`${
             item.day < 10 ? "0" + item.day : item.day
@@ -86,7 +86,7 @@ export function ListReport({ data, token }: Props) {
             })}
           </p>
           <button
-            className="absolute top-0 -right-6 bg-red-500 p-2 rounded-full"
+            className="absolute -top-3 -right-1 bg-red-500 p-2 rounded-full hover:opacity-75"
             type="button"
             onClick={() => {
               if (confirm("Tem certeza que deseja deletar deste relatório?")) {

@@ -46,7 +46,7 @@ export function FormRegister() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button
-        className="bg-amber-300 p-2 rounded-md text-slate-500 font-semibold"
+        className="bg-amber-500 p-2 rounded-md text-slate-500 font-semibold"
         type="submit"
       >
         Cadastrar
