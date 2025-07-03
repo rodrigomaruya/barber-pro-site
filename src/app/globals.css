@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: #1d293d;
+  --foreground: #f1f5f9;
+  --font-sans: var(--font-poppins);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #f1f5f9;
+    --foreground: #1d293d;
+  }
+}
+
+@media (min-width: 1443px) {
+  .custom-lg\:flex {
+    display: flex;
+  }
+}
+@media (min-width: 1443px) {
+  .flex-row-1443 {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1443px) {
+  .ml-1443 {
+    margin-left: auto;
+  }
+}
+@media (min-width: 1443px) {
+  .custom-lg-hidden\:hidden {
+    display: none;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+input {
+  color: var(--background);
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.2s ease-out forwards;
+}
+
+.slide-out-left {
+  animation: slideOutLeft 0.2s ease-in forwards;
+}
+
+h1 {
+  @apply text-3xl md:text-4xl font-bold text-[var(--foreground)];
+}
+h2 {
+  @apply text-slate-50;
+}
+input {
+  @apply bg-slate-50 rounded-md p-2 text-slate-950;
+}
+button {
+  @apply cursor-pointer font-semibold text-slate-50;
+}
+a {
+  @apply text-slate-50;
 }

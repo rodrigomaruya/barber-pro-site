@@ -1,0 +1,35 @@
+import { Metadata } from "next";
+import logoBarber from "/public/logo.svg";
+import Image from "next/image";
+import { FormRegister } from "./components/register";
+import { getCookiesServer } from "@/lib/cookiesServer";
+import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "BARBER-PRO - Cadastrar",
+  description: "Seu sistema completo",
+};
+
+export default async function Register() {
+  const token = await getCookiesServer();
+  if (token) {
+    redirect("/dashboard");
+  }
+
+  return (
+    <main className="flex items-center justify-center min-h-screen bg-slate-800">
+      <section className="w-full max-w-5xl p-4 flex flex-col items-center gap-4">
+        <div className="relative w-full max-w-xl h-28">
+          <Image
+            src={logoBarber}
+            alt="logo barber-pro"
+            quality={100}
+            fill={true}
+            priority={true}
+          />
+        </div>
+        <FormRegister />
+      </section>
+    </main>
+  );
+}
