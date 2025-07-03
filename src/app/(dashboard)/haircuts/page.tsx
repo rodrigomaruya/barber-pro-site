@@ -6,36 +6,16 @@ import { IoMdPricetag } from "react-icons/io";
 import SwitchToggle from "./components/switchToggle";
 import { getCookiesServer } from "@/lib/cookiesServer";
 import { redirect } from "next/navigation";
-import { setupAPIClient } from "@/service/api";
 import { ListHaircuts } from "./components/listHaircuts";
 export const metadata: Metadata = {
   title: "Modelos de corte - Minha Barbearia",
 };
-
-interface Props {
-  data: HaircutsProps[];
-}
-
-interface HaircutsProps {
-  id: string;
-  name: string;
-  price: number | string;
-  status: boolean;
-  user_id: string;
-}
 
 export default async function Haircuts() {
   const token = await getCookiesServer();
   if (!token) {
     redirect("/");
   }
-
-  const api = setupAPIClient(token);
-  const response: Props = await api.get("/haircuts", {
-    params: {
-      status: true,
-    },
-  });
 
   return (
     <main className=" mr-auto py-4 px-4 w-full">
@@ -56,7 +36,7 @@ export default async function Haircuts() {
           <SwitchToggle token={token} />
         </div>
         <div className="w-full max-w-5xl mx-auto mt-10">
-          <ListHaircuts data={response.data} />
+          <ListHaircuts token={token} />
         </div>
       </div>
     </main>

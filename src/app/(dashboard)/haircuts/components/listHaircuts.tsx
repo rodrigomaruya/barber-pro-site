@@ -4,9 +4,10 @@ import { use, useEffect } from "react";
 import { AuthContext } from "@/context/authProvider";
 import Link from "next/link";
 import { IoMdPricetag } from "react-icons/io";
+import { setupAPIClient } from "@/service/api";
 
 interface Props {
-  data: HaircutsProps[];
+  token: string;
 }
 
 interface HaircutsProps {
@@ -17,12 +18,21 @@ interface HaircutsProps {
   user_id: string;
 }
 
-export function ListHaircuts({ data }: Props) {
+export function ListHaircuts({ token }: Props) {
   const { setListActiveHaircuts, listActiveHaircuts } = use(AuthContext);
 
   useEffect(() => {
-    setListActiveHaircuts(data);
-  }, [data]);
+    async function getListHaircuts() {
+      const api = setupAPIClient(token);
+      const response = await api.get("/haircuts", {
+        params: {
+          status: true,
+        },
+      });
+      setListActiveHaircuts(response.data);
+    }
+    getListHaircuts();
+  }, []);
 
   return (
     <>
