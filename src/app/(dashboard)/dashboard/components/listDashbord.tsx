@@ -32,6 +32,7 @@ export function ListDashboard({ token }: Props) {
       const { data } = await api.get("/schedule");
       setHaircut(data);
     }
+    getHaircut();
   }, []);
 
   function handleOpen(id: string) {
