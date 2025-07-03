@@ -20,7 +20,7 @@ export default function SwitchToggle({ token }: Props) {
           status: false,
         },
       });
-      setListActiveHaircuts({ data });
+      setListActiveHaircuts(data);
       setEnabled(false);
     } else {
       const { data } = await api.get("/haircuts", {
@@ -28,7 +28,7 @@ export default function SwitchToggle({ token }: Props) {
           status: true,
         },
       });
-      setListActiveHaircuts({ data });
+      setListActiveHaircuts(data);
       setEnabled(true);
     }
   }
