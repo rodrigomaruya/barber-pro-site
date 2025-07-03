@@ -10,14 +10,12 @@ export const metadata: Metadata = {
   title: "Editando modelo de corte - BarberPro",
 };
 
-interface Props {
-  params: {
-    id: string;
-  };
-}
-
-export default async function EditHaircut({ params }: Props) {
-  const { id } = params;
+export default async function EditHaircut({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   const token = await getCookiesServer();
   const api = setupAPIClient(token);
   if (!token) {
