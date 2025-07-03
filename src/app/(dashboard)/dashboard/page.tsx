@@ -3,7 +3,6 @@ import { getCookiesServer } from "@/lib/cookiesServer";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ListDashboard } from "./components/listDashbord";
-import { setupAPIClient } from "@/service/api";
 export const metadata: Metadata = {
   title: "BARBER-PRO - Bem vindo ao dashboard",
 };
@@ -14,9 +13,6 @@ export default async function Dashboard() {
   if (!token) {
     redirect("/login");
   }
-  const api = setupAPIClient(token);
-
-  const { data } = await api.get("/schedule");
 
   return (
     <main className="mr-auto py-4 px-4 w-full">
@@ -26,7 +22,7 @@ export default async function Dashboard() {
           Registrar
         </Link>
       </div>
-      <ListDashboard data={data} token={token} />
+      <ListDashboard token={token} />
     </main>
   );
 }

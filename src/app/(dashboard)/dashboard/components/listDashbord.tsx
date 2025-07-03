@@ -7,7 +7,6 @@ import { IoMdPerson } from "react-icons/io";
 import { setupAPIClient } from "@/service/api";
 
 interface Props {
-  data: HaircutProps[];
   token?: string;
 }
 
@@ -21,13 +20,18 @@ interface HaircutProps {
   };
 }
 
-export function ListDashboard({ data, token }: Props) {
-  const [haircut, setHaircut] = useState<HaircutProps[]>(data);
+export function ListDashboard({ token }: Props) {
+  const [haircut, setHaircut] = useState<HaircutProps[]>([]);
   const [modalHaircut, setModalHaircut] = useState<HaircutProps>();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    setHaircut(data);
+    async function getHaircut() {
+      const api = setupAPIClient(token);
+
+      const { data } = await api.get("/schedule");
+      setHaircut(data);
+    }
   }, []);
 
   function handleOpen(id: string) {
