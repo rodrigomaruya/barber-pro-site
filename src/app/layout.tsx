@@ -12,6 +12,16 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "BARBER-PRO",
   description: "Seu sistema completo",
+  openGraph: {
+    images: [
+      {
+        url: "https://barber-pro-site.vercel.app/logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Logo",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
